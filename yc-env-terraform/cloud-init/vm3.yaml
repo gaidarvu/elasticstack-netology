@@ -1,0 +1,21 @@
+#cloud-config
+users:
+  - name: gaidar
+    groups: sudo
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh_authorized_keys:
+      - ${vms_ssh_root_key}
+package_update: true
+package_upgrade: false
+packages:
+  - vim
+  - wget
+  - curl
+  - apt-transport-https
+runcmd:
+  - wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+  - echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
+  - apt update
+  - apt -y install kibana
+  

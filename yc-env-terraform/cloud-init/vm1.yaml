@@ -1,0 +1,21 @@
+#cloud-config
+users:
+  - name: gaidar
+    groups: sudo
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh_authorized_keys:
+      - ${vms_ssh_root_key}
+package_update: true
+package_upgrade: false
+packages:
+  - vim
+  - wget
+  - curl
+runcmd:
+  - wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.17.1-amd64.deb
+  - wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.17.1-amd64.deb.sha512
+  - shasum -a 512 -c elasticsearch-8.17.1-amd64.deb.sha512 
+  - dpkg -i elasticsearch-8.17.1-amd64.deb
+  - systemctl enable elasticsearch.service
+  - systemctl start elasticsearch.service
