@@ -30,6 +30,13 @@
       notify: Restart service
       when: inventory_hostname == 'kibana'
 
+    - name: Copy cfg for Kibana
+      template:
+        src: elasticsearch.yml.j2
+        dest: /etc/elasticsearch/elasticsearch.yml
+      notify: Restart service
+      when: inventory_hostname == 'elasticsearch'
+
     - name: Save install output to file
       copy:
         content: "{{ install_output.stdout }}\n{{ install_output.stderr }}"
