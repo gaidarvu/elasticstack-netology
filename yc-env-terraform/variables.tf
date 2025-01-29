@@ -82,7 +82,7 @@ variable "each_vm" {
       platform_id="standard-v3"
       vm_name="filebeat"
       cpu=2
-      ram=2
+      ram=1
       core_fraction=20
       type="network-hdd"
       disk_volume=10
