@@ -35,7 +35,18 @@
         src: elasticsearch.yml.j2
         dest: /etc/elasticsearch/elasticsearch.yml
       notify: Restart service
-      when: inventory_hostname == 'elasticsearch'
+      when: inventory_hostname in ['elasticsearch-hot', 'elasticsearch-warm']
+    
+    - name: Set JVM options for Elasticsearch
+      lineinfile:
+        path: /etc/elasticsearch/jvm.options
+        line: "{{ item }}"
+        create: yes
+      with_items:
+        - "-Xms512m"
+        - "-Xmx512m"
+      notify: Restart service
+      when: inventory_hostname in ['elasticsearch-hot', 'elasticsearch-warm']
 
     - name: Save install output to file
       copy:
@@ -43,10 +54,10 @@
         dest: "/home/gaidar/install_output.log"
       when: install_output.changed
 
-    - name: Display install output
-      debug:
-        msg: "{{ install_output.stdout_lines + install_output.stderr_lines }}"
-      when: install_output.changed
+    # - name: Display install output
+    #   debug:
+    #     msg: "{{ install_output.stdout_lines + install_output.stderr_lines }}"
+    #   when: install_output.changed
 
     # - name: Get network settings
     #   set_fact:

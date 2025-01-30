@@ -20,7 +20,8 @@ cluster.name: es-docker-cluster
 #
 # Use a descriptive name for the node:
 #
-node.name: es-hot
+node.name: {{ node_name }}
+node.roles: {{ node_roles }}
 #
 # Add custom attributes to the node:
 #
