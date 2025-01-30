@@ -66,18 +66,18 @@ variable "each_vm" {
       scheduling_policy=true
       os_family="fd8jnll1ou4fv2gil3rv"
     }
-    # "vm3" = {
-    #   platform_id="standard-v3"
-    #   vm_name="logstash"
-    #   cpu=2
-    #   ram=2
-    #   core_fraction=20
-    #   type="network-hdd"
-    #   disk_volume=10
-    #   network_interface=true
-    #   scheduling_policy=true
-    #   os_family="fd8jnll1ou4fv2gil3rv"
-    # }
+    "vm3" = {
+      platform_id="standard-v3"
+      vm_name="logstash"
+      cpu=2
+      ram=2
+      core_fraction=20
+      type="network-hdd"
+      disk_volume=10
+      network_interface=true
+      scheduling_policy=true
+      os_family="fd8jnll1ou4fv2gil3rv"
+    }
     "vm4" = {
       platform_id="standard-v3"
       vm_name="kibana"
@@ -90,17 +90,17 @@ variable "each_vm" {
       scheduling_policy=true
       os_family="fd8jnll1ou4fv2gil3rv"
     }
-    # "vm5" = {
-    #   platform_id="standard-v3"
-    #   vm_name="filebeat"
-    #   cpu=2
-    #   ram=1
-    #   core_fraction=20
-    #   type="network-hdd"
-    #   disk_volume=10
-    #   network_interface=true
-    #   scheduling_policy=true
-    #   os_family="fd8jnll1ou4fv2gil3rv"
-    # }
+    "vm5" = {
+      platform_id="standard-v3"
+      vm_name="filebeat"
+      cpu=2
+      ram=1
+      core_fraction=20
+      type="network-hdd"
+      disk_volume=10
+      network_interface=true
+      scheduling_policy=true
+      os_family="fd8jnll1ou4fv2gil3rv"
+    }
   }
 }
