@@ -4,5 +4,6 @@ locals {
     vm2 = file("${path.module}/cloud-init/vm2.yaml")
     vm3 = file("${path.module}/cloud-init/vm3.yaml")
     vm4 = file("${path.module}/cloud-init/vm4.yaml")
+    vm5 = file("${path.module}/cloud-init/vm5.yaml")
   }
 }
