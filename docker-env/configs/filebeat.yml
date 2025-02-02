@@ -1,8 +1,8 @@
 filebeat.inputs:
   - type: log
     paths:
-      - '/var/log/*.log'
-      # - '/mnt/docker-desktop-data/docker-desktop-disk/data/docker/containers/*/*.log'
+      # - '/var/log/*.log'
+      - '/mnt/docker-desktop-data/docker-desktop-disk/data/docker/containers/*/*.log'
 
 processors:
   - add_docker_metadata:
